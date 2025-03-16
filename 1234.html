@@ -27,6 +27,9 @@
             justify-content: space-between;
             padding: 10px;
             background-color: #007BFF;
+            position: sticky; /* Keep the header sticky at the top */
+            top: 0;
+            z-index: 100; /* Ensure it's above other content */
         }
         .box {
             padding: 10px 20px;
@@ -39,21 +42,24 @@
         
         /* Sidebar and form styling */
         .sidebar {
-            width: 250px;
+            width: 100%;
             background-color: #f4f4f4;
             padding: 20px;
             box-sizing: border-box;
             border-right: 10px solid #ccc;
             flex-grow: 1; /* Makes sure the sidebar stretches as needed */
+            display: flex;
+            justify-content: center;
         }
 
         form {
-            max-width: 400px;
-            margin: auto;
+            max-width: 500px; /* Adjust form width */
+            width: 100%;
             padding: 20px;
             border: 1px solid #ccc;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
         }
         label {
             font-weight: bold;
@@ -82,6 +88,9 @@
         main {
             flex: 1; /* Ensures main content expands and pushes footer to the bottom */
             padding: 20px;
+            display: flex;
+            justify-content: center; /* Centering the image */
+            align-items: center;
         }
 
         /* Footer styling */
@@ -90,8 +99,35 @@
             color: white;
             padding: 10px;
             text-align: center;
+            margin-top: auto; /* This pushes footer to the bottom */
         }
-        
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .topbar {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .box {
+                margin-bottom: 10px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .sidebar {
+                padding: 10px;
+            }
+
+            form {
+                padding: 15px;
+            }
+
+            main {
+                flex-direction: column;
+            }
+        }
+
         /* Accessibility modal styling */
         #axeResultsModal {
             display: none;
@@ -187,7 +223,7 @@
 <main role="main" aria-label="Main Content">
     <div class="main-container">
         <div class="flexbox">
-            <img src="pictures/ICT_Banner.jpg" alt="Week 3 Image" style="width: 95%; height: 95%; object-fit: cover; border-radius: 5px;">
+            <img src="pictures/ICT_Banner.jpg" alt="Week 3 Image" style="width: 100%; height: auto; object-fit: cover; border-radius: 5px;">
         </div>
     </div>
 </main>
