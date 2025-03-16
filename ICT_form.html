@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Support Call Log</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form action="submit_support_call.php" method="post">
+        <label for="employee_name">Employee Name</label>
+        <input type="text" id="employee_name" name="employee_name" required>
+
+        <label for="department">Department</label>
+        <select id="department" name="department" required>
+            <option value="Mathematics">Mathematics</option>
+            <option value="English">English</option>
+            <option value="Science">Science</option>
+            <option value="History">History</option>
+            <option value="Geography">Geography</option>
+            <option value="Art & Design">Art & Design</option>
+            <option value="Music">Music</option>
+            <option value="Physical Education">Physical Education</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Modern Foreign Languages">Modern Foreign Languages</option>
+        </select>
+
+        <label for="room_number">Room Number</label>
+        <select id="room_number" name="room_number" required>
+            <option value="">Select Room</option>
+            <script>
+                let floors = ['G', 'F', 'S'];
+                let select = document.currentScript.parentElement;
+                floors.forEach(floor => {
+                    let maxRooms = floor === 'G' ? 29 : 30;
+                    for (let i = 1; i <= maxRooms; i++) {
+                        let room = `${floor}${i}`;
+                        let option = document.createElement('option');
+                        option.value = room;
+                        option.textContent = room;
+                        select.appendChild(option);
+                    }
+                });
+            </script>
+        </select>
+
+        <label for="issue_type">Issue Type</label>
+        <select id="issue_type" name="issue_type" required>
+            <option value="PCs/Laptops">PCs/Laptops</option>
+            <option value="Mice/Keyboards">Mice/Keyboards</option>
+            <option value="Smartboards">Smartboards</option>
+            <option value="Password resets">Password resets</option>
+            <option value="Webcams, speakers">Webcams, speakers</option>
+            <option value="Internet Access">Internet Access</option>
+            <option value="Software">Software</option>
+            <option value="Performance">Performance</option>
+            <option value="Accessibility">Accessibility</option>
+        </select>
+
+        <label for="priority">Priority</label>
+        <select id="priority" name="priority" required>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+            <option value="Critical">Critical</option>
+        </select>
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="3" required></textarea>
+
+        <button type="submit">Log Call</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FixLangley</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+	<!-- link to remote axe script that is testing website accessibility -->
+	<script src="https://cdn.jsdelivr.net/npm/axe-core@4.4.0/axe.min.js"></script>
+</head>
+<body>
+	<h1>
+	<header role="banner" aria-label="Main Header">
+		<div class="topbar">
+			<a href="ICT_Support_Caretakers.html"><div class="box">Home Page</div></a>
+			
+			<a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
+client_id=YOUR_CLIENT_ID
+&response_type=token
+&redirect_uri=https://damien83mancheste.github.io/iFixLangley/week3.html
+&scope=openid profile email
+&response_mode=fragment"><div class="box">Login</div>
+
+			</a>
+
+			
+			
+			
+			
+		</div>
+	</header>
+	</h1>
+
+    <div class="sidebar">
+        <div class="top-boxes">
+			<a href="Site_Branch.html"><div class="box">Plumbing Issues </div></a>
+			<a href="Site_Branch.html"><div class="box">HVAC Problems</div></a>
+			<a href="Site_Branch.html"><div class="box">Electrical Issues </div></a>
+			<a href="Site_Branch.html"><div class="box">Pest Infestations</div></a>
+			<a href="Site_Branch.html"><div class="box">Appliance Malfunctions</div></a>
+			<a href="Site_Branch.html"><div class="box">Structural Repairs</div></a>
+			<a href="Site_Branch.html"><div class="box">Lock and Security Issues</div></a>
+			<a href="Site_Branch.html"><div class="box">Others</div></a>
+			<a href="#"><div class="box" id="runAxeTest">Accessibility</div></a>
+
+
+			
+        </div>
+    </div>
+
+<main role="main" aria-label="Main Content">
+	<div class="main-container">
+		<div class="flexbox" tabindex="0" style="
+			background-color: #f2f2f7; 
+			flex: 1; 
+			padding: 12%;
+			outline: 2px solid transparent;			
+			border: 10px solid #ccc; 
+			border-radius: 10px; 
+			text-align: center; 
+			min-height: 10%; 
+			width: 50%; 
+			margin-left: 12%;
+			overflow: hidden; 
+			display: flex;
+			justify-content: center;
+			align-items: center;"
+			onfocus="this.style.outline='2px solid blue'"
+			onblur="this.style.outline='2px solid transparent'">
+			
+			<img src="pictures/SITE_Banner.jpg" alt="Week 3 Image" style="
+				width: 95%; 
+				height: 95%;
+				object-fit: cover;
+				border-radius: 5px;">
+		</div>
+	</div>
+</main>
+<footer role="contentinfo" aria-label="Footer Section">
+    <p>
+        <img src="pictures/favicon-32x32.png" alt="iFixLangley Logo" width="32" height="32">
+        iFixLangley.
+    </p>
+</footer>
+		
+<!-- This is a code I took from AXE website when I was researching for open source methodes that allows me to check website accessibility -->		
+		
+					
+					
+<div id="axeResultsModal" style="display:none; position:fixed; top:35%; left:35%; width:40%; height:40%; background-color:white; border:1px solid black; padding:20px; overflow:auto;">
+  <h2>Accessibility Issues</h2>
+  <pre id="axeResults"></pre>
+  <button onclick="document.getElementById('axeResultsModal').style.display='none'">Close</button>
+</div>
+
+<script>
+document.getElementById("runAxeTest").addEventListener("click", function() {
+  axe.run(function (err, results) {
+    if (err) {
+      console.error("Error running axe-core:", err);
+    } else {
+      let issues = results.violations.map(v => `${v.id}: ${v.description}`).join("\n");
+      document.getElementById("axeResults").textContent = issues;
+      document.getElementById('axeResultsModal').style.display = 'block';
+    }
+  });
+});
+</script>
+</html>
