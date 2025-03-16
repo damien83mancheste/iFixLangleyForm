@@ -81,7 +81,7 @@
             <h2><p>Log Support Ticket</p></h2>
         </main>
 
-        <form action="submit_support_call.php" method="post">
+         <form id="supportForm" action="submit_support_call.php" method="post" onsubmit="return showConfirmation()">
             <label for="employee_name">Employee Name</label>
             <input type="text" id="employee_name" name="employee_name" required>
 
@@ -144,7 +144,12 @@
 
             <button type="submit">Log Call</button>
         </form>
-
+		        <!-- Confirmation box will be displayed here after form submission -->
+        <div id="confirmation" class="confirmation-box" style="display:none;">
+            <h2>Support Request Submitted!</h2>
+            <p>Your support request has been successfully submitted. It has been assigned to the technician on duty, and they will assist you shortly.</p>
+        </div>
+		
         <footer role="contentinfo" aria-label="Footer Section">
             <p>
                 <img src="pictures/favicon-32x32.png" alt="iFixLangley Logo" width="32" height="32">
@@ -152,5 +157,23 @@
             </p>
         </footer>
     </div>
+	
+    <script>
+        // Function to show the confirmation box
+        function showConfirmation() {
+            // Preventing form submission for demo purposes
+            event.preventDefault();
+
+            // Hide the form and show the confirmation
+            document.querySelector("form").style.display = "none";
+            document.getElementById("confirmation").style.display = "block";
+            
+            // In real-world use, here you can submit the form programmatically if needed:
+            // document.getElementById("supportForm").submit();
+            
+            return false; // Prevent actual form submission for demo
+        }
+    </script>	
+	
 </body>
 </html>
