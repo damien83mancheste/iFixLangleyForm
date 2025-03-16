@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>IT Support Call Log - FixLangley</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <!-- link to remote axe script that is testing website accessibility -->
     <script src="https://cdn.jsdelivr.net/npm/axe-core@4.4.0/axe.min.js"></script>
     <style>
         /* Body and page layout adjustments */
@@ -25,14 +24,14 @@
         .topbar {
             display: flex;
             justify-content: space-between;
-            padding: 10px;
+            padding: 5px 10px; /* Reduced padding for a more compact header */
             background-color: #007BFF;
             position: sticky; /* Keep the header sticky at the top */
             top: 0;
             z-index: 100; /* Ensure it's above other content */
         }
         .box {
-            padding: 10px 20px;
+            padding: 5px 15px; /* Reduced padding */
             background-color: #ffffff;
             color: #007BFF;
             border-radius: 5px;
@@ -44,27 +43,29 @@
         .sidebar {
             width: 100%;
             background-color: #f4f4f4;
-            padding: 20px;
+            padding: 10px;
             box-sizing: border-box;
             border-right: 10px solid #ccc;
-            flex-grow: 1; /* Makes sure the sidebar stretches as needed */
+            flex-grow: 1;
             display: flex;
             justify-content: center;
+            align-items: center;
         }
 
         form {
             max-width: 500px; /* Adjust form width */
             width: 100%;
-            padding: 20px;
+            padding: 15px;
             border: 1px solid #ccc;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             background-color: white;
+            z-index: 1; /* Ensure it is above other elements */
         }
         label {
             font-weight: bold;
             display: block;
-            margin-top: 10px;
+            margin-top: 8px; /* Reduced margin */
         }
         input, select, textarea, button {
             width: 100%;
@@ -86,17 +87,29 @@
         
         /* Main content area */
         main {
-            flex: 1; /* Ensures main content expands and pushes footer to the bottom */
-            padding: 20px;
+            flex: 1;
+            padding: 5px 10px; /* Reduced padding for the main content area */
+            display: flex;
+            justify-content: center; /* Centering the image */
+            align-items: center;
+            flex-direction: column; /* Stack form and image vertically */
+            gap: 8px; /* Adjusted gap between form and image */
+        }
+
+        .flexbox img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 5px;
         }
 
         /* Footer styling */
         footer {
             background-color: #007BFF;
             color: white;
-            padding: 10px;
+            padding: 5px 10px; /* Reduced footer padding */
             text-align: center;
-            margin-top: auto; /* This pushes footer to the bottom */
+            margin-top: auto;
         }
 
         /* Mobile responsiveness */
@@ -107,17 +120,32 @@
             }
 
             .box {
-                margin-bottom: 10px;
+                margin-bottom: 8px;
                 width: 100%;
                 text-align: center;
             }
 
             .sidebar {
+                width: 100%;
+                height: 5%; /* Set height to 5% of the screen */
+                position: fixed; /* Fixed position to stick at the bottom */
+                bottom: 0; /* Align it to the bottom of the screen */
+                background-color: #f4f4f4;
                 padding: 10px;
+                box-sizing: border-box;
+                border-right: 10px solid #ccc;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
 
             form {
-                padding: 15px;
+                padding: 10px; /* Adjusted padding for smaller form */
+            }
+
+            main {
+                flex-direction: column;
+                gap: 8px; /* Reduced gap on mobile */
             }
         }
 
@@ -213,13 +241,6 @@
     </form>
 </div>
 
-<main role="main" aria-label="Main Content">
-    <div class="main-container">
-        <div class="flexbox">
-            <img src="pictures/ICT_Banner.jpg" alt="Week 3 Image" style="width: 95%; height: 95%; object-fit: cover; border-radius: 5px;">
-        </div>
-    </div>
-</main>
 
 <footer role="contentinfo" aria-label="Footer Section">
     <p>
