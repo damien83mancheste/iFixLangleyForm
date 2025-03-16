@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Support Call Log</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 20px;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+        }
+        .topbar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .box {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .box:hover {
+            background-color: #0056b3;
+        }
+        form {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header role="banner" aria-label="Main Header">
+            <div class="topbar">
+                <a href="ICT_Support_Caretakers.html" class="box">Home Page</a>
+                <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=YOUR_CLIENT_ID&response_type=token&redirect_uri=https://damien83mancheste.github.io/iFixLangley/week3.html&scope=openid profile email&response_mode=fragment" class="box">Login</a>
+            </div>
+        </header>
+
+        <main>
+            <h2><p>Log Support Ticket</p></h2>
+        </main>
+
+         <form id="supportForm">
+            <label for="employee_name">Employee Name</label>
+            <input type="text" id="employee_name" name="employee_name" required>
+
+            <label for="department">Department</label>
+            <select id="department" name="department" required>
+                <option value="Mathematics">Mathematics</option>
+                <option value="English">English</option>
+                <option value="Science">Science</option>
+                <option value="History">History</option>
+                <option value="Geography">Geography</option>
+                <option value="Art & Design">Art & Design</option>
+                <option value="Music">Music</option>
+                <option value="Physical Education">Physical Education</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Modern Foreign Languages">Modern Foreign Languages</option>
+            </select>
+
+            <label for="room_number">Room Number</label>
+            <select id="room_number" name="room_number" required>
+                <option value="">Select Room</option>
+                <script>
+                    let floors = ['G', 'F', 'S'];
+                    let select = document.currentScript.parentElement;
+                    floors.forEach(floor => {
+                        let maxRooms = floor === 'G' ? 29 : 30;
+                        for (let i = 1; i <= maxRooms; i++) {
+                            let room = `${floor}${i}`;
+                            let option = document.createElement('option');
+                            option.value = room;
+                            option.textContent = room;
+                            select.appendChild(option);
+                        }
+                    });
+                </script>
+            </select>
+
+            <label for="issue_type">Issue Type</label>
+            <select id="issue_type" name="issue_type" required>
+                <option value="PCs/Laptops">PCs/Laptops</option>
+                <option value="Mice/Keyboards">Mice/Keyboards</option>
+                <option value="Smartboards">Smartboards</option>
+                <option value="Password resets">Password resets</option>
+                <option value="Webcams, speakers">Webcams, speakers</option>
+                <option value="Internet Access">Internet Access</option>
+                <option value="Software">Software</option>
+                <option value="Performance">Performance</option>
+                <option value="Accessibility">Accessibility</option>
+            </select>
+
+            <label for="priority">Priority</label>
+            <select id="priority" name="priority" required>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+                <option value="Critical">Critical</option>
+            </select>
+
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="3" required></textarea>
+
+            <button type="submit">Log Call</button>
+        </form>
+        
+        <!-- Confirmation box will be displayed here after form submission -->
+        <div id="confirmation" class="confirmation-box" style="display:none;">
+            <h2>Support Request Submitted!</h2>
+            <p>Your support request has been successfully submitted. It has been assigned to the technician on duty, and they will assist you shortly.</p>
+        </div>
+        
+        <footer role="contentinfo" aria-label="Footer Section">
+            <p>
+                <img src="pictures/favicon-32x32.png" alt="iFixLangley Logo" width="32" height="32">
+                iFixLangley.
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById("supportForm").onsubmit = function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            var formData = new FormData();
+            formData.append("employee_name", document.getElementById("employee_name").value);
+            formData.append("department", document.getElementById("department").value);
+            formData.append("room_number", document.getElementById("room_number").value);
+            formData.append("issue_type", document.getElementById("issue_type").value);
+            formData.append("priority", document.getElementById("priority").value);
+            formData.append("description", document.getElementById("description").value);
+
+            // Replace this URL with the HTTP request URL from Power Automate
+            fetch('YOUR_POWER_AUTOMATE_URL', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Show confirmation box
+                document.querySelector("form").style.display = "none";
+                document.getElementById("confirmation").style.display = "block";
+            })
+            .catch(error => {
+                alert("Error submitting form: " + error);
+            });
+        };
+    </script>
+
+</body>
+</html>
